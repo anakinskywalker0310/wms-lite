@@ -1,4 +1,4 @@
-# WMS-lite
+markdown# WMS-lite
 
 Proste REST API do zarządzania magazynem (Warehouse Management System) zbudowane w FastAPI.
 
@@ -32,3 +32,31 @@ pip install -r requirements.txt
 ```
 
 Stwórz plik `.env` w głównym folderze:
+SECRET_KEY=twoj-tajny-klucz
+
+Uruchom serwer:
+```bash
+uvicorn app.main:app --reload
+```
+
+Dokumentacja API (Swagger) dostępna pod: `http://127.0.0.1:8000/docs`
+
+## Główne endpointy
+
+| Metoda | Ścieżka | Opis | Wymaga autoryzacji |
+|--------|---------|------|---------------------|
+| POST | `/register` | Rejestracja użytkownika | Nie |
+| POST | `/login` | Logowanie, zwraca token JWT | Nie |
+| GET | `/products` | Lista produktów | Nie |
+| POST | `/products` | Dodanie produktu | Tak |
+| PUT | `/products/{id}` | Edycja produktu | Tak |
+| DELETE | `/products/{id}` | Usunięcie produktu | Tak (manager) |
+| GET | `/products/alerts/low-stock` | Produkty poniżej stanu minimalnego | Nie |
+| GET | `/locations` | Lista lokalizacji | Nie |
+| POST | `/stock-movements` | Rejestracja ruchu magazynowego | Tak |
+
+## Plany rozwoju
+
+- Testy jednostkowe (pytest)
+- Docker
+- Frontend (React)
