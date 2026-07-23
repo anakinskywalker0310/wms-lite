@@ -72,6 +72,7 @@ Dokumentacja API (Swagger) dostępna pod: `http://127.0.0.1:8000/docs`
 
 ## Plany rozwoju
 
-- Testy jednostkowe (pytest)
-- Docker
-- Frontend (React) ✅ gotowy — zobacz folder `frontend/`
+- [x] Frontend w React (logowanie, CRUD produktów, alerty, role) — zobacz folder `frontend/`
+- [ ] Testy jednostkowe (pytest)
+- [ ] Docker + docker-compose
+- [ ] Hosting demo online
