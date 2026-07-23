@@ -14,6 +14,17 @@ Proste REST API do zarządzania magazynem (Warehouse Management System) zbudowan
 - Alert niskiego stanu magazynowego
 - Walidacja danych i obsługa błędów (404, 400, 401, 403)
 
+## Zrzuty ekranu
+
+### Logowanie
+![Logowanie](screenshots/login.png)
+
+### Lista produktów
+![Produkty](screenshots/products.png)
+
+### Alerty niskiego stanu
+![Alerty](screenshots/alerts.png)
+
 ## Stack technologiczny
 
 - **FastAPI** — framework webowy
