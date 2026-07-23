@@ -24,7 +24,8 @@ Proste REST API do zarządzania magazynem (Warehouse Management System) zbudowan
 ## Uruchomienie lokalne
 
 ```bash
-git clone https://github.com/anakinskywalker0310/wms.lite.git
+git clone https://github.com/anakinskywalker0310/wms-lite.git
+cd wms-lite
 cd wms.lite
 python -m venv venv
 venv\Scripts\activate
