@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-function Products() {
+function Products({ currentUser }) {
   const [products, setProducts] = useState([]);
   const [error, setError] = useState('');
   const [formData, setFormData] = useState({
@@ -46,11 +46,24 @@ function Products() {
     e.preventDefault();
     setError('');
 
+    if (!formData.sku.trim() || !formData.name.trim()) {
+      setError('SKU i nazwa produktu są wymagane.');
+      return;
+    }
+
+    const quantityNum = Number(formData.quantity);
+    const minThresholdNum = Number(formData.min_threshold);
+
+    if (quantityNum < 0 || minThresholdNum < 0) {
+      setError('Ilość i próg minimalny nie mogą być ujemne.');
+      return;
+    }
+
     const token = localStorage.getItem('token');
     const payload = {
       ...formData,
-      quantity: Number(formData.quantity) || 0,
-      min_threshold: Number(formData.min_threshold) || 0,
+      quantity: quantityNum || 0,
+      min_threshold: minThresholdNum || 0,
     };
 
     const url = editingId
@@ -79,7 +92,6 @@ function Products() {
       setError(err.message);
     }
   };
-
   const handleEdit = (product) => {
     setFormData({
       sku: product.sku,
@@ -138,10 +150,12 @@ function Products() {
               <td>{product.category}</td>
               <td>{product.quantity}</td>
               <td>{product.min_threshold}</td>
-              <td>
-                <button onClick={() => handleEdit(product)}>Edytuj</button>
-                <button onClick={() => handleDelete(product.id)}>Usuń</button>
-              </td>
+             <td>
+  <button onClick={() => handleEdit(product)}>Edytuj</button>
+  {currentUser?.role === 'manager' && (
+    <button onClick={() => handleDelete(product.id)}>Usuń</button>
+  )}
+</td>
             </tr>
           ))}
         </tbody>

@@ -250,3 +250,11 @@ def login(user: schemas.UserCreate, db: Session = Depends(get_db)):
 
     access_token = create_access_token(data={"sub": db_user.username})
     return {"access_token": access_token, "token_type": "bearer"}
+
+@app.get("/me", response_model=schemas.UserOut)
+def read_current_user(current_user: models.User = Depends(get_current_user)):
+    return current_user
+
+@app.get("/me", response_model=schemas.UserOut)
+def read_current_user(current_user: models.User = Depends(get_current_user)):
+    return current_user
