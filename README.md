@@ -1,4 +1,6 @@
-markdown# WMS-lite
+![WMS-lite banner](banner.png)
+
+# WMS-lite
 
 Proste REST API do zarządzania magazynem (Warehouse Management System) zbudowane w FastAPI.
 
@@ -26,14 +28,15 @@ Proste REST API do zarządzania magazynem (Warehouse Management System) zbudowan
 ```bash
 git clone https://github.com/anakinskywalker0310/wms-lite.git
 cd wms-lite
-cd wms.lite
 python -m venv venv
 venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
 Stwórz plik `.env` w głównym folderze:
+
 SECRET_KEY=twoj-tajny-klucz
+
 
 Uruchom serwer:
 ```bash
@@ -60,4 +63,4 @@ Dokumentacja API (Swagger) dostępna pod: `http://127.0.0.1:8000/docs`
 
 - Testy jednostkowe (pytest)
 - Docker
-- Frontend (React)
+- Frontend (React) ✅ gotowy — zobacz folder `frontend/`
