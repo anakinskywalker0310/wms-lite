@@ -5,6 +5,7 @@ from sqlalchemy.exc import IntegrityError
 from app.database import Base, engine, SessionLocal
 from app import models
 from app import schemas
+from fastapi.middleware.cors import CORSMiddleware
 from app.core.security import (
     hash_password,
     verify_password,
@@ -16,8 +17,13 @@ from app.core.security import (
 Base.metadata.create_all(bind=engine)
 
 app = FastAPI(title="WMS-lite")
-
-
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:5173", "http://localhost:5174"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 def get_db():
     db = SessionLocal()
     try:
